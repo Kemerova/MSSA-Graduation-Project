@@ -18,28 +18,6 @@ function showLogo(type, idx) {
   return logo;
 }
 
-function updateSlideLogo(index, withTransition = true) {
-  const slideLogo = document.getElementById('slideLogoImage');
-  if (!slideLogo) return;
-  
-  const logo = showLogo('display', index);
-  
-  if (withTransition) {
-    // Add fade-out transition
-    slideLogo.style.opacity = '0';
-    slideLogo.style.transform = 'scale(0.9)';
-    
-    // After fade-out, update the image and fade back in
-    setTimeout(() => {
-      setImage(slideLogo, logo);
-      slideLogo.style.opacity = '1';
-      slideLogo.style.transform = 'scale(1)';
-    }, 300);
-  } else {
-    // Update immediately without transition
-    setImage(slideLogo, logo);
-  }
-}
 // Lock, Stock, and Two Smoking Servers: A MSSA Odyssey
 console.log('🎓 Lock, Stock, and Two Smoking Servers: A MSSA Odyssey - Loading...');
 
@@ -470,12 +448,10 @@ function showLogoFlash(flashIdx, callback) {
             src: "images/logos/logo-main.jpg",
             alt: "Main Cohort Logo"
         };
-        
         setImage(logoFlashImage1, mainLogoData);
         logoFlashImage2.style.display = 'none'; // Hide second image
         logoFlash.classList.remove('vertical-layout', 'horizontal-layout');
         logoFlash.classList.add('single-logo');
-        
         logoFlash.classList.add('active');
         setTimeout(() => {
             logoFlash.classList.remove('active');
@@ -483,7 +459,7 @@ function showLogoFlash(flashIdx, callback) {
                 logoFlashImage2.style.display = 'block'; // Restore second image
                 if (callback) callback();
             }, 500);
-        }, 5500);
+        }, 5000); // 5 seconds
         return;
     }
     
