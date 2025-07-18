@@ -351,20 +351,69 @@ function checkTextOverflow() {
     // Clear any existing scroll animation
     slideText.classList.remove('scrolling');
     slideText.style.transform = 'translateY(0)';
-    
-    // Wait for layout to stabilize
+    slideText.style.opacity = 1;
+
+    // Wait for layout to stabilize, then force DOM reflow and re-measure text height
     setTimeout(() => {
-        // Always enable scrolling - simple approach
-        const scrollDuration = 30; // 30 seconds to read everything
-        const endPosition = '-150%'; // Scroll 150% of container height to show all content
-        
-        slideText.style.setProperty('--scroll-duration', scrollDuration + 's');
-        slideText.style.setProperty('--scroll-end-position', endPosition);
-        
-        // Start scrolling immediately
-        slideText.classList.add('scrolling');
-        
-        console.log(`Simple scrolling enabled: ${scrollDuration}s duration, ${endPosition} end position`);
+        // Force reflow by reading offsetHeight
+        void slideText.offsetHeight;
+        setTimeout(() => {
+            const container = slideText.parentElement;
+            const textHeight = slideText.scrollHeight;
+            const containerHeight = container.clientHeight;
+            const scrollDistance = textHeight - containerHeight;
+
+            if (scrollDistance <= 0) {
+                // No scroll needed
+                slideText.style.transform = 'translateY(0)';
+                slideText.classList.remove('scrolling');
+                slideText.style.opacity = 1;
+                return;
+            }
+
+            // Dynamically set scroll duration: 20px/sec, min 12s, max 60s (slower)
+            const pxPerSec = 20;
+            const scrollDuration = Math.max(12, Math.min(60, scrollDistance / pxPerSec));
+            const endPosition = `-${scrollDistance}px`;
+
+            slideText.style.setProperty('--scroll-duration', scrollDuration + 's');
+            slideText.style.setProperty('--scroll-end-position', endPosition);
+
+            // Start scrolling after logo flash (2s delay)
+            if (AppState.textScrollTimer) clearInterval(AppState.textScrollTimer);
+            let position = 0;
+            const speed = 0.5; // px per frame (slower, was scrollDistance/(scrollDuration*60))
+            const frameRate = 32; // ms per frame (slower, was 1000/60)
+
+            function scrollLoop() {
+                position = 0;
+                slideText.style.opacity = 1;
+                slideText.style.transform = 'translateY(0)';
+                slideText.classList.add('scrolling');
+                AppState.textScrollTimer = setInterval(() => {
+                    position += speed;
+                    slideText.style.transform = `translateY(-${position}px)`;
+                    // Fade out in last 10%
+                    if (position > scrollDistance * 0.9) {
+                        const fade = (scrollDistance - position) / (scrollDistance * 0.1);
+                        slideText.style.opacity = Math.max(0, fade);
+                    } else {
+                        slideText.style.opacity = 1;
+                    }
+                    if (position >= scrollDistance) {
+                        clearInterval(AppState.textScrollTimer);
+                        slideText.style.transform = `translateY(-${scrollDistance}px)`;
+                        slideText.style.opacity = 0;
+                        // Loop scroll after 1s pause
+                        setTimeout(scrollLoop, 1000);
+                    }
+                }, frameRate);
+            }
+
+            setTimeout(scrollLoop, 2000); // 2s delay for logo flash
+
+            console.log(`Dynamic scrolling enabled: ${scrollDuration}s duration, ${endPosition} end position, slower speed, delayed start, looping`);
+        }, 100); // 100ms reflow delay
     }, 500);
 }
 
