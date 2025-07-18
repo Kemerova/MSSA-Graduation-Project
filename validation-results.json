@@ -1,0 +1,427 @@
+{
+  "timestamp": "2025-07-15T13:29:34.912Z",
+  "tests": [
+    {
+      "name": "File Structure Validation",
+      "status": "passed",
+      "duration": 1,
+      "details": {
+        "required": {
+          "index.html": true,
+          "styles.css": true,
+          "script.js": true,
+          "package.json": true,
+          "staticwebapp.config.json": true,
+          "api/package.json": true,
+          "api/chat.js": true,
+          "api/function.json": true
+        },
+        "optional": {
+          "DEPLOYMENT-COMPLETE.md": true,
+          "TROUBLESHOOTING.md": true,
+          "final-deployment-test.js": true,
+          "validate-local-deployment.js": true
+        },
+        "missing": [],
+        "present": [
+          "index.html",
+          "styles.css",
+          "script.js",
+          "package.json",
+          "staticwebapp.config.json",
+          "api/package.json",
+          "api/chat.js",
+          "api/function.json",
+          "DEPLOYMENT-COMPLETE.md",
+          "TROUBLESHOOTING.md",
+          "final-deployment-test.js",
+          "validate-local-deployment.js"
+        ]
+      },
+      "timestamp": "2025-07-15T13:29:34.917Z"
+    },
+    {
+      "name": "HTML Structure Analysis",
+      "status": "passed",
+      "duration": 2,
+      "details": {
+        "checks": {
+          "hasDoctype": true,
+          "hasTitle": true,
+          "hasViewport": true,
+          "hasCharset": true,
+          "hasMainContent": true,
+          "hasChatbotModal": true,
+          "hasNavigation": true,
+          "hasProgressBar": true,
+          "hasSemanticHTML": true,
+          "hasAccessibility": true
+        },
+        "issues": [],
+        "contentLength": 13187,
+        "hasExpectedContent": true
+      },
+      "timestamp": "2025-07-15T13:29:34.920Z"
+    },
+    {
+      "name": "CSS Structure Analysis",
+      "status": "passed",
+      "duration": 1,
+      "details": {
+        "checks": {
+          "hasCustomProperties": true,
+          "hasResponsiveDesign": true,
+          "hasFlexbox": true,
+          "hasAnimations": true,
+          "hasColorScheme": true,
+          "hasProfessionalStyling": true,
+          "hasAccessibilityStyles": true,
+          "hasModernCSS": true
+        },
+        "issues": [],
+        "contentLength": 30123,
+        "hasMinification": false
+      },
+      "timestamp": "2025-07-15T13:29:34.922Z"
+    },
+    {
+      "name": "JavaScript Structure Analysis",
+      "status": "passed",
+      "duration": 1,
+      "details": {
+        "checks": {
+          "hasClasses": true,
+          "hasModernJS": true,
+          "hasAsyncCode": true,
+          "hasEventListeners": true,
+          "hasErrorHandling": true,
+          "hasSlideshowLogic": true,
+          "hasChatbotLogic": true,
+          "hasNavigationLogic": true,
+          "hasAPIIntegration": true,
+          "hasAccessibilityCode": true
+        },
+        "issues": [],
+        "contentLength": 101489,
+        "hasMinification": false
+      },
+      "timestamp": "2025-07-15T13:29:34.924Z"
+    },
+    {
+      "name": "API Structure Validation",
+      "status": "passed",
+      "duration": 2,
+      "details": {
+        "files": {
+          "api/package.json": {
+            "valid": true,
+            "content": {
+              "name": "cohort-chronicles-api",
+              "version": "1.0.0",
+              "description": "Azure Functions API for Cohort Chronicles chatbot",
+              "main": "index.js",
+              "scripts": {
+                "start": "func start",
+                "test": "jest",
+                "build": "echo 'API build complete'",
+                "prestart": "npm run build"
+              },
+              "dependencies": {
+                "@azure/functions": "^4.0.0",
+                "openai": "^4.0.0",
+                "dotenv": "^16.3.1",
+                "@azure/app-configuration": "^1.5.0",
+                "@azure/identity": "^4.0.1",
+                "express-rate-limit": "^7.1.5",
+                "helmet": "^7.1.0",
+                "validator": "^13.11.0"
+              },
+              "devDependencies": {
+                "jest": "^29.7.0",
+                "clean-css-cli": "^5.6.2",
+                "terser": "^5.24.0"
+              },
+              "engines": {
+                "node": ">=18.0.0"
+              }
+            },
+            "size": 741
+          },
+          "api/chat.js": {
+            "valid": true,
+            "size": 11407,
+            "hasOpenAI": true,
+            "hasErrorHandling": true,
+            "hasExports": true
+          },
+          "api/function.json": {
+            "valid": true,
+            "content": {
+              "bindings": [
+                {
+                  "authLevel": "anonymous",
+                  "type": "httpTrigger",
+                  "direction": "in",
+                  "name": "req",
+                  "methods": [
+                    "get",
+                    "post",
+                    "options"
+                  ],
+                  "route": "chat"
+                },
+                {
+                  "type": "http",
+                  "direction": "out",
+                  "name": "res"
+                }
+              ]
+            },
+            "size": 306
+          }
+        },
+        "hasOpenAIDependency": "^4.0.0",
+        "apiPackage": {
+          "name": "cohort-chronicles-api",
+          "version": "1.0.0",
+          "description": "Azure Functions API for Cohort Chronicles chatbot",
+          "main": "index.js",
+          "scripts": {
+            "start": "func start",
+            "test": "jest",
+            "build": "echo 'API build complete'",
+            "prestart": "npm run build"
+          },
+          "dependencies": {
+            "@azure/functions": "^4.0.0",
+            "openai": "^4.0.0",
+            "dotenv": "^16.3.1",
+            "@azure/app-configuration": "^1.5.0",
+            "@azure/identity": "^4.0.1",
+            "express-rate-limit": "^7.1.5",
+            "helmet": "^7.1.0",
+            "validator": "^13.11.0"
+          },
+          "devDependencies": {
+            "jest": "^29.7.0",
+            "clean-css-cli": "^5.6.2",
+            "terser": "^5.24.0"
+          },
+          "engines": {
+            "node": ">=18.0.0"
+          }
+        }
+      },
+      "timestamp": "2025-07-15T13:29:34.926Z"
+    },
+    {
+      "name": "Configuration Files Check",
+      "status": "passed",
+      "duration": 2,
+      "details": {
+        "staticwebapp.config.json": {
+          "valid": true,
+          "content": {
+            "routes": [
+              {
+                "route": "/api/*",
+                "allowedRoles": [
+                  "anonymous"
+                ]
+              },
+              {
+                "route": "/*",
+                "serve": "/index.html",
+                "statusCode": 200
+              }
+            ],
+            "navigationFallback": {
+              "rewrite": "/index.html",
+              "exclude": [
+                "/images/*.{png,jpg,gif,ico,svg}",
+                "/styles.css",
+                "/script.js",
+                "/api/*"
+              ]
+            },
+            "mimeTypes": {
+              ".json": "application/json",
+              ".js": "application/javascript",
+              ".css": "text/css",
+              ".html": "text/html",
+              ".png": "image/png",
+              ".jpg": "image/jpeg",
+              ".jpeg": "image/jpeg",
+              ".gif": "image/gif",
+              ".svg": "image/svg+xml",
+              ".ico": "image/x-icon"
+            },
+            "globalHeaders": {
+              "Cache-Control": "public, max-age=86400",
+              "X-Content-Type-Options": "nosniff",
+              "X-Frame-Options": "DENY",
+              "X-XSS-Protection": "1; mode=block",
+              "Referrer-Policy": "strict-origin-when-cross-origin",
+              "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.openai.azure.com https://*.azurestaticapps.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+              "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+              "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+            },
+            "responseOverrides": {
+              "404": {
+                "rewrite": "/index.html",
+                "statusCode": 200
+              }
+            },
+            "platform": {
+              "apiRuntime": "node:18"
+            },
+            "trailingSlash": "never"
+          },
+          "missingRequired": [],
+          "missingOptional": []
+        },
+        "package.json": {
+          "valid": true,
+          "content": {
+            "name": "cohort-chronicles",
+            "version": "1.0.0",
+            "description": "Interactive slideshow for MSSA cohort graduation ceremony",
+            "main": "script.js",
+            "scripts": {
+              "test": "jest",
+              "test:watch": "jest --watch",
+              "test:coverage": "jest --coverage",
+              "test:unit": "jest --testPathPattern=unit",
+              "test:integration": "jest --testPathPattern=integration",
+              "test:e2e": "playwright test --reporter=line",
+              "test:performance": "jest --testPathPattern=performance",
+              "test:all": "npm run test:unit && npm run test:integration && npm run test:performance",
+              "serve": "python -m http.server 8000",
+              "lint": "eslint *.js tests/**/*.js"
+            },
+            "devDependencies": {
+              "jest": "^29.7.0",
+              "jest-environment-jsdom": "^29.7.0",
+              "@playwright/test": "^1.40.0",
+              "@testing-library/jest-dom": "^6.1.4",
+              "@testing-library/dom": "^9.3.3",
+              "eslint": "^8.54.0",
+              "lighthouse": "^11.4.0",
+              "puppeteer": "^21.5.2"
+            },
+            "jest": {
+              "testEnvironment": "jsdom",
+              "setupFilesAfterEnv": [
+                "<rootDir>/tests/setup.js"
+              ],
+              "collectCoverageFrom": [
+                "script.js",
+                "!node_modules/**",
+                "!tests/**"
+              ],
+              "coverageReporters": [
+                "text",
+                "lcov",
+                "html"
+              ],
+              "testMatch": [
+                "**/tests/**/*.test.js"
+              ]
+            },
+            "engines": {
+              "node": ">=18.0.0"
+            }
+          },
+          "missingRequired": [],
+          "missingOptional": [
+            "dependencies"
+          ]
+        }
+      },
+      "timestamp": "2025-07-15T13:29:34.929Z"
+    },
+    {
+      "name": "Documentation Review",
+      "status": "passed",
+      "duration": 2,
+      "details": {
+        "present": [
+          "DEPLOYMENT-COMPLETE.md",
+          "TROUBLESHOOTING.md",
+          "README.md"
+        ],
+        "missing": [],
+        "analysis": {
+          "DEPLOYMENT-COMPLETE.md": {
+            "size": 26391,
+            "sections": 140,
+            "hasCodeBlocks": true,
+            "hasLinks": true,
+            "comprehensive": true
+          },
+          "TROUBLESHOOTING.md": {
+            "size": 23404,
+            "sections": 132,
+            "hasCodeBlocks": true,
+            "hasLinks": true,
+            "comprehensive": true
+          },
+          "README.md": {
+            "size": 11153,
+            "sections": 58,
+            "hasCodeBlocks": true,
+            "hasLinks": true,
+            "comprehensive": true
+          }
+        }
+      },
+      "timestamp": "2025-07-15T13:29:34.932Z"
+    },
+    {
+      "name": "Build Process Check",
+      "status": "passed",
+      "duration": 1,
+      "details": {
+        "hasBuildScript": true,
+        "hasDistDirectory": true,
+        "buildScriptContent": {
+          "size": 4410,
+          "hasMinification": true,
+          "hasOptimization": false,
+          "hasAssetProcessing": true
+        },
+        "distContents": [
+          "config.js",
+          "images",
+          "index.html",
+          "script.js",
+          "staticwebapp.config.json",
+          "styles.css"
+        ]
+      },
+      "timestamp": "2025-07-15T13:29:34.934Z"
+    },
+    {
+      "name": "Environment Configuration",
+      "status": "passed",
+      "duration": 3,
+      "details": {
+        "envFiles": {
+          ".env": false,
+          ".env.example": true,
+          "api/.env": false,
+          "api/.env.example": true
+        },
+        "hasExamples": true,
+        "hasLocalConfig": false
+      },
+      "timestamp": "2025-07-15T13:29:34.937Z"
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "warnings": 1
+  }
+}

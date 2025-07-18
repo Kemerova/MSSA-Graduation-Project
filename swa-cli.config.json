@@ -1,0 +1,15 @@
+{
+  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "configurations": {
+    "mssa-project": {
+      "appLocation": ".",
+      "apiLocation": "api",
+      "outputLocation": ".",
+      "apiLanguage": "node",
+      "apiVersion": "16",
+      "apiBuildCommand": "npm run build --if-present",
+      "appName": "2",
+      "resourceGroup": "2-rg"
+    }
+  }
+}

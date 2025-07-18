@@ -1,0 +1,21 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AZURE_OPENAI_ENDPOINT": "",
+    "AZURE_OPENAI_API_KEY": "",
+    "AZURE_OPENAI_API_VERSION": "2024-02-15-preview",
+    "AZURE_OPENAI_DEPLOYMENT_NAME": "gpt-35-turbo",
+    "APP_CONFIG_CONNECTION_STRING": "",
+    "APP_CONFIG_ENDPOINT": "",
+    "SECURITY_RATE_LIMIT_MAX": "10",
+    "SECURITY_RATE_LIMIT_WINDOW": "60000",
+    "SECURITY_MAX_MESSAGE_LENGTH": "1000",
+    "SECURITY_ALLOWED_ORIGINS": "https://localhost:4280,https://*.azurestaticapps.net"
+  },
+  "Host": {
+    "CORS": "https://localhost:4280,https://*.azurestaticapps.net",
+    "CORSCredentials": false
+  }
+}

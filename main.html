@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lock, Stock, and Two Smoking Servers: An MSSA Odyssey - The graduation story of eight military veterans turned tech wizards">
+    <meta name="author" content="MSSA Cohort - Lock, Stock, and Two Smoking Servers">
+    <meta name="keywords" content="MSSA, Microsoft, Azure, graduation, military veterans, IT careers, PowerShell, cloud computing">
+    <title>MSSA Europe Cohort 06 Cloud & Server Administration - Lock, Stock, and Two Smoking Servers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <div class="logo">
+                    <div class="logo__icon">🎓</div>
+                    <div class="logo__text">
+                        <h1 class="logo__title">Lock, Stock, and Two Smoking Servers</h1>
+                        <p class="logo__subtitle">An MSSA Odyssey</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header__info">
+                <div class="program-info">
+                    <h2 class="program-info__title">Microsoft Software & Systems Academy</h2>
+                    <p class="program-info__date">April 7 - August 1, 2025</p>
+                    <p class="program-info__duration">17-Week Journey</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Progress Bar Section -->
+        <section class="progress-section" id="progress-section" aria-label="Slideshow Progress">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" 
+                     role="progressbar" 
+                     aria-label="Slideshow progress"
+                     aria-valuenow="1" 
+                     aria-valuemin="1" 
+                     aria-valuemax="7"
+                     aria-valuetext="Slide 1 of 7, 14% complete"
+                     tabindex="0">
+                    <div class="progress-fill" id="progress-fill"></div>
+                    <div class="progress-segments" id="progress-segments"></div>
+                    <div class="progress-text">
+                        <span class="progress-counter" id="progress-label">Slide 1 of 7</span>
+                        <span class="progress-center">Made possible by <span class="argus-red">Project: ARGUS</span></span>
+                        <span class="progress-percentage" id="progressPercentage">14%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <!-- Main Application -->
+    <main class="main" id="main-content">
+
+        <!-- Slideshow Section -->
+        <section class="slideshow-section" aria-label="MSSA Journey Slideshow">
+            <div class="slideshow-container">
+                <div class="slideshow" id="slideshow" 
+                     role="region" 
+                     aria-label="MSSA Journey Slideshow"
+                     aria-live="polite"
+                     aria-atomic="true">
+                    <div class="slide active" id="current-slide" 
+                         role="img"
+                         aria-label="Slide 1 of 7: Lock, Stock, and Two Smoking Servers: An MSSA Odyssey"
+                         tabindex="0">
+                        <div class="slide__image-container" id="slide-image">
+                            <div class="image-placeholder" role="img" aria-label="Comic-book style panel showing diverse group of military veterans in uniform transitioning to casual tech attire">
+                                <img class="slide__image" src="images/1.png" alt="Comic-book style panel showing diverse group of military veterans in uniform transitioning to casual tech attire, gathered around glowing computer screens. Calendar flips from April 7 to August 1, 2025, with Azure clouds and PowerShell code swirling like a storm." loading="lazy" />
+                            </div>
+                            <div class="slide__image-overlay"></div>
+                        </div>
+                        <div class="slide__content" id="slide-content">
+                            <h2 class="slide__title" id="slide-title">Lock, Stock, and Two Smoking Servers: An MSSA Odyssey</h2>
+                            <p class="slide__text">Welcome to the tale of our ragtag cohort of eight veterans-turned-tech-wizards. From April 7 to August 1, 2025, over 17 grueling yet glorious weeks, we navigated the uncharted waters of Microsoft's Software and Systems Academy. We were a band of brothers: Brandon Brown (Navy, Sweden), Frank Taylor (UK Army, from Fiji), Fortune Tofa (UK Army, Zimbabwe), Jacob Phillips (Air Force, USA→UK), Michael Blake (Army, Germany), Nicholas Stauffer (Army, South Korea), Ryan Turney (Army, Germany), and Ty Wolf (Army, Germany). Guiding us were Iain May (coordinator extraordinaire) and Fiona Jones (our CDM and ProDev instructor who taught us the 'swan act').</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Controls -->
+        <section class="controls-section">
+            <div class="controls-container">
+                <div class="navigation-controls">
+                    <button class="nav-btn nav-btn--prev" id="prevBtn" aria-label="Previous slide">
+                        <svg class="nav-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span class="nav-btn__text">Previous</span>
+                    </button>
+                    
+                    
+                    <button class="nav-btn nav-btn--next" id="nextBtn" aria-label="Next slide">
+                        <span class="nav-btn__text">Next</span>
+                        <svg class="nav-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+
+    <!-- Per-slide Logo (side display) -->
+    <div class="side-logo-container" id="sideLogoContainer">
+        <img src="images/logos/logo-1.png" alt="Cohort Logo" id="sideLogoImage" />
+    </div>
+
+    <!-- Logo Flash Container (existing, for flashing logos 1-6) -->
+    <div class="logo-flash" id="logoFlash">
+        <img src="images/logos/logo-1.png" alt="Cohort Logo Concept" id="logoFlashImage1">
+        <img src="images/logos/logo-2.png" alt="Cohort Logo Concept" id="logoFlashImage2">
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading" id="loading">
+        <div class="loading__spinner"></div>
+        <p class="loading__text">Loading the MSSA Odyssey...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" id="errorMessage" style="display: none;">
+        <div class="error-message__container">
+            <svg class="error-message__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/>
+            </svg>
+            <p class="error-message__text" id="errorText">Something went wrong. Please try again.</p>
+            <button class="error-message__close" id="errorClose">&times;</button>
+        </div>
+    </div>
+
+    <!-- Connection Status Indicator -->
+    <div class="connection-status" id="connectionStatus">
+        <div class="connection-status__indicator"></div>
+        <span class="connection-status__text">Online</span>
+    </div>
+
+    <!-- Offline Indicator -->
+    <div class="offline-indicator" id="offlineIndicator">
+        You are currently offline. Some features may not work properly.
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Cohort Chronicles - MSSA Graduation Story of Lock, Stock, and Two Smoking Servers">
+    <meta name="author" content="MSSA Cohort - Lock, Stock, and Two Smoking Servers">
+    <meta name="keywords" content="MSSA, Microsoft, Azure, graduation, military veterans, IT careers">
+    <title>The Cohort Chronicles - MSSA Graduation Story</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <div class="logo">
+                    <div class="logo__icon">🎓</div>
+                    <div class="logo__text">
+                        <h1 class="logo__title">The Cohort Chronicles</h1>
+                        <p class="logo__subtitle">Lock, Stock, and Two Smoking Servers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header__info">
+                <div class="program-info">
+                    <h2 class="program-info__title">Microsoft Software & Systems Academy</h2>
+                    <p class="program-info__date">April 7 - August 1, 2025</p>
+                    <p class="program-info__duration">17-Week Journey</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Application -->
+    <main class="main">
+        <!-- Progress Bar Section -->
+        <section class="progress-section">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-segments" id="progressSegments"></div>
+                </div>
+                <div class="progress-info">
+                    <span class="progress-counter" id="progressCounter">Week 1 of 17</span>
+                    <span class="progress-percentage" id="progressPercentage">6%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slideshow Section -->
+        <section class="slideshow-section">
+            <div class="slideshow-container">
+                <div class="slideshow" id="slideshow">
+                    <div class="slide active" id="currentSlide">
+                        <div class="slide__image-container">
+                            <img class="slide__image" id="slideImage" src="images/powershell-week.jpg" alt="PowerShell Week">
+                            <div class="slide__image-overlay"></div>
+                        </div>
+                        <div class="slide__content">
+                            <h2 class="slide__title" id="slideTitle">The Power-Hell Chronicles</h2>
+                            <p class="slide__text" id="slideText">Our journey began with PowerShell under Mike Howell's guidance. Most of us had no programming background - we quickly renamed it 'Power-Hell'. Military veterans learning to code for the first time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Controls -->
+        <section class="controls-section">
+            <div class="controls-container">
+                <div class="navigation-controls">
+                    <button class="nav-btn nav-btn--prev" id="prevBtn" aria-label="Previous slide">
+                        <svg class="nav-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span class="nav-btn__text">Previous</span>
+                    </button>
+                    
+                    <button class="nav-btn nav-btn--play-pause" id="playPauseBtn" aria-label="Pause slideshow">
+                        <svg class="nav-btn__icon play-icon" id="playIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polygon points="5,3 19,12 5,21"/>
+                        </svg>
+                        <svg class="nav-btn__icon pause-icon active" id="pauseIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </svg>
+                        <span class="nav-btn__text" id="playPauseText">Pause</span>
+                    </button>
+                    
+                    <button class="nav-btn nav-btn--next" id="nextBtn" aria-label="Next slide">
+                        <span class="nav-btn__text">Next</span>
+                        <svg class="nav-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="speed-controls">
+                    <label class="speed-label">Speed:</label>
+                    <select class="speed-select" id="speedSelect">
+                        <option value="12000">Slow (12s)</option>
+                        <option value="8000" selected>Normal (8s)</option>
+                        <option value="5000">Fast (5s)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Ask the Cohort Button -->
+    <div class="chat-trigger">
+        <button class="chat-trigger__btn" id="chatTriggerBtn" aria-label="Ask the Cohort">
+            <svg class="chat-trigger__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+            <span class="chat-trigger__text">Ask the Cohort</span>
+        </button>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="modal" id="chatModal" aria-hidden="true">
+        <div class="modal__overlay" id="modalOverlay"></div>
+        <div class="modal__container">
+            <div class="modal__header">
+                <h2 class="modal__title">Ask the Cohort</h2>
+                <button class="modal__close" id="modalClose" aria-label="Close chat">
+                    <svg class="modal__close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="modal__content">
+                <div class="chat">
+                    <div class="chat__messages" id="chatMessages">
+                        <div class="chat__message chat__message--bot">
+                            <div class="chat__avatar">
+                                <div class="avatar">🎓</div>
+                            </div>
+                            <div class="chat__content">
+                                <p class="chat__text">Hello! We're the MSSA cohort "Lock, Stock, and Two Smoking Servers." Ask us anything about our 17-week journey from Power-Hell beginners to Azure professionals!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat__typing" id="chatTyping" style="display: none;">
+                        <div class="chat__avatar">
+                            <div class="avatar">🎓</div>
+                        </div>
+                        <div class="chat__content">
+                            <div class="typing-indicator">
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat__input-container">
+                        <div class="chat__input-wrapper">
+                            <input 
+                                type="text" 
+                                class="chat__input" 
+                                id="chatInput" 
+                                placeholder="Type your question here..."
+                                maxlength="500"
+                                autocomplete="off"
+                            >
+                            <button class="chat__send" id="chatSend" aria-label="Send message">
+                                <svg class="chat__send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading" id="loading">
+        <div class="loading__spinner"></div>
+        <p class="loading__text">Loading The Cohort Chronicles...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" id="errorMessage" style="display: none;">
+        <div class="error-message__container">
+            <svg class="error-message__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/>
+            </svg>
+            <p class="error-message__text" id="errorText">Something went wrong. Please try again.</p>
+            <button class="error-message__close" id="errorClose">&times;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

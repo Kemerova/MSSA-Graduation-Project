@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSSA Europe Cohort 06 Cloud & Server Administration - Lock, Stock, and Two Smoking Servers</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .captcha-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .captcha-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .captcha-instructions {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .captcha-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem auto;
+        }
+        
+        .captcha-item {
+            position: relative;
+            cursor: pointer;
+            border: 3px solid transparent;
+            border-radius: 8px;
+            overflow: hidden;
+            user-select: none;
+            transition: all 0.2s ease;
+            aspect-ratio: 1;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .captcha-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .captcha-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .captcha-item.selected {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
+        
+        .captcha-verify {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .captcha-verify:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .captcha-done {
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            display: none;
+        }
+        
+        .captcha-done.ok {
+            color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        .captcha-done.fail {
+            color: var(--error-color);
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .continue-button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: none;
+            transition: all 0.2s ease;
+        }
+        
+        .continue-button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .military-humor {
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <div class="logo">
+                    <div class="logo__icon">🎓</div>
+                    <div class="logo__text">
+                        <h1 class="logo__title">MSSA Security Check</h1>
+                        <p class="logo__subtitle">Prove You Were Paying Attention</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="captcha-container">
+            <h2 class="captcha-title">🔒 MSSA Attention Verification</h2>
+            <p class="captcha-instructions">
+                Before accessing The Cohort Chronicles, please complete this security check.<br>
+                <strong>Select all images where Michael is actually paying attention:</strong>
+            </p>
+            <p class="military-humor" style="margin-bottom: 1rem;">
+                💡 <em>ARGUS says: Michael's camera is built into his tiny laptop, but the Teams Meeting is on his main monitor. 
+                So he's actually paying attention when NOT looking at the camera!</em>
+            </p>
+            
+            <div id="attentionCaptcha">
+                <div class="captcha-grid"></div>
+                <button id="captchaVerify" class="captcha-verify">Verify Selection</button>
+                <p id="captchaMsg" class="captcha-done"></p>
+                <button id="continueBtn" class="continue-button" onclick="window.location.href='main.html'">
+                    🚀 Access The Cohort Chronicles
+                </button>
+            </div>
+            
+            <p class="military-humor">
+                💡 Hint: Military training taught us to always look alert... even when we're not.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        (() => {
+            // Real Michael photos - paying attention vs not paying attention
+            const images = [
+                // Images where Michael IS paying attention (correct answers)
+                {src: 'images/captcha/attention-1.png', ok: true, alt: 'Michael paying attention in class'},
+                {src: 'images/captcha/attention-2.png', ok: true, alt: 'Michael focused and engaged'},
+                {src: 'images/captcha/attention-3.png', ok: true, alt: 'Michael actively listening'},
+                {src: 'images/captcha/attention-4.png', ok: true, alt: 'Michael alert and focused'},
+                {src: 'images/captcha/attention-5.png', ok: true, alt: 'Michael paying close attention'},
+                
+                // Images where Michael is NOT paying attention (wrong answers)
+                {src: 'images/captcha/no-attention-1.png', ok: false, alt: 'Michael zoned out'},
+                {src: 'images/captcha/no-attention-2.png', ok: false, alt: 'Michael distracted'},
+                {src: 'images/captcha/no-attention-3.png', ok: false, alt: 'Michael looking away'},
+                {src: 'images/captcha/no-attention-4.png', ok: false, alt: 'Michael not focused'}
+            ];
+
+            // Fisher-Yates shuffle for randomness
+            for (let i = images.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [images[i], images[j]] = [images[j], images[i]];
+            }
+
+            // Render
+            const grid = document.querySelector('#attentionCaptcha .captcha-grid');
+            const verify = document.getElementById('captchaVerify');
+            const msg = document.getElementById('captchaMsg');
+            const continueBtn = document.getElementById('continueBtn');
+
+            images.forEach((img, idx) => {
+                const box = document.createElement('div');
+                box.className = 'captcha-item';
+                box.dataset.ok = img.ok;
+                box.dataset.idx = idx;
+                box.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
+                box.addEventListener('click', () => {
+                    box.classList.toggle('selected');
+                    // Add click sound effect (optional)
+                    // new Audio('click.mp3').play().catch(() => {});
+                });
+                grid.appendChild(box);
+            });
+
+            // Verify logic - everyone passes because Michael is ALWAYS paying attention!
+            verify.addEventListener('click', () => {
+                const boxes = Array.from(document.querySelectorAll('.captcha-item'));
+                // Get how many images they selected
+                const selectedCount = boxes.filter(b => b.classList.contains('selected')).length;
+                
+                msg.style.display = 'block';
+                msg.className = 'captcha-done ok';
+                
+                // Different success messages based on selection count
+                if (selectedCount === 0) {
+                    msg.textContent = '✅ Correct! Michael is ALWAYS paying attention - even when not looking at the camera!';
+                } else if (selectedCount === boxes.length) {
+                    msg.textContent = '✅ Absolutely right! Michael is ALWAYS paying attention in EVERY image!';
+                } else {
+                    msg.textContent = '✅ Correct! Michael is always paying attention - whether looking at the camera or his main monitor!';
+                }
+                
+                // Always show the continue button
+                continueBtn.style.display = 'inline-block';
+                
+                // Optional: Auto-redirect after success
+                setTimeout(() => {
+                    if (confirm('Ready to access The Cohort Chronicles?')) {
+                        window.location.href = 'main.html';
+                    }
+                }, 2000);
+            });
+
+            // Easter egg: Konami code for instant access
+            let konamiCode = [];
+            const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+            
+            document.addEventListener('keydown', (e) => {
+                konamiCode.push(e.code);
+                if (konamiCode.length > konamiSequence.length) {
+                    konamiCode.shift();
+                }
+                
+                if (konamiCode.join(',') === konamiSequence.join(',')) {
+                    msg.textContent = '🎮 Konami Code detected! Military hackers get instant access! 🚀';
+                    msg.className = 'captcha-done ok';
+                    msg.style.display = 'block';
+                    continueBtn.style.display = 'inline-block';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
